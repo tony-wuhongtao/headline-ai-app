@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# 新建项目
+```
+npx create-next-app@latest headline-ai-app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# 基础修改
+1. 清空默认homepage
+2. 清空public下文件
+3. 删除globals.css里面除头部tailwind设置之外的样式
+4. 安装Tailwind和DaisyUI
+ 
+```
+npm i -D daisyui@latest
+npm i @tailwindcss/typography
+```
+5. tailwind.config.js配置修改
+```
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  ...
+  plugins: [require('@tailwindcss/typography'), require('daisyui')]
+};
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+# 开发起步
+1. 修改Layouts，参考Tailwind 的媒体查询和布局等，编写一个main div层的classname，把childeren放里面
+2. 创建app下的pages页面，里面放独自的目录和page.jsx文件
+3. 必要的compoentents文件夹，下新建组件
+4. app下新建api目录，下面建目录和router.js文件
+5. 修改next.config.js文件，添加api路由的access
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# 部署
+1. npm run build
+2. Linux中安装pm2 Nginx
+3. pm2启动项目，可以加到package.json中
+4. 修改nginx配置文件，添加反向代理,放到site-available下
+```
+server {
+        server_name 117.114.153.xxx ai.cetv-headline.com;
 
-## Learn More
+        listen 443 ssl;
+        ssl_certificate /etc/nginx/cert/ai.cetv-headline.com_nginx/xxx.pem;
+        ssl_certificate_key /etc/nginx/cert/ai.cetv-headline.com_nginx/xxx.key;
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+        location / {
+         proxy_pass http://localhost:3100;
+        }
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+}
 
-## Deploy on Vercel
+```
+5. 测试配置文件是否OK
+```
+nginx -t
+```
+6. 重启nginx
+```
+systemctl restart nginx
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# 样式参考
+
+
+
+
+# API参考
+## coze API
+https://api.coze.cn/open_api/v2/chat
+
+需要token，在coze.cn里申请
+```
+const body = {
+        "conversation_id": converstaion_id,
+        "bot_id": bot_id,
+        "user": user,
+        "query": query,
+        "stream":false
+    }
+
+    const res = await fetch(cozeApiUrl, {
+        method: "POST",
+        headers: {
+            'Accept': '*/*',
+            'Host': 'api.coze.cn',
+            'Connection': 'keep-alive',
+            "Content-Type": "application/json; charset=utf-8",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(body)
+    })
+```
+
+
