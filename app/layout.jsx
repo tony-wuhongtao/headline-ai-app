@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-      <main className="px-8 py-20 max-w-9xl mx-auto md:flex-col sm:flex-row" >
+      <main className="px-8 py-5 md:py-8 lg:py-10 max-w-6xl mx-auto flex-col sm:flex-row" >
         {children}
       </main>        
       </body>
