@@ -40,7 +40,7 @@ const HomePage = () => {
       </div>
 
       <div className='flex flex-col sm:flex-row'>
-        <Link href="/pages/videos" className='flex-1 w-full md:w-1/2 lg:w-1/3'>
+        <Link href="/pages/vectormix" className='flex-1 w-full md:w-1/2 lg:w-1/3'>
           <div className="carousel carousel-center rounded-box m-6 hover:shadow-lg">
             <div className="carousel-item w-full flex justify-center items-center">
               <div className="card-body absolute text-center">
