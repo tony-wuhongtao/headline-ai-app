@@ -7,6 +7,8 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent } from "@/components/ui/card"
 import { toast } from "@/components/ui/use-toast"
 
+import ThemeMenu from "@/components/theme-menu"
+
 export default function Component() {
   const [prompt, setPrompt] = useState("")
   const [style, setStyle] = useState("style1")
@@ -38,6 +40,7 @@ export default function Component() {
       <div className="bg-background p-6 md:w-1/2 overflow-y-auto">
         <header className="flex items-center justify-between mb-6">
           <h1 className="text-2xl font-bold">文生图 Text2Image</h1>
+          <ThemeMenu />
         </header>
         <div className="space-y-6">
           <div>

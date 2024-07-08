@@ -79,6 +79,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
+import ThemeMenu from "@/components/theme-menu"
+
 export default function Dashboard() {
   const { setTheme } = useTheme()
   return (
@@ -167,7 +169,7 @@ export default function Dashboard() {
             </TooltipTrigger>
             <TooltipContent side="right">Settings</TooltipContent>
           </Tooltip>
-          <DropdownMenu>
+          {/* <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="icon">
                 <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
@@ -186,7 +188,8 @@ export default function Dashboard() {
                 System
               </DropdownMenuItem>
             </DropdownMenuContent>
-          </DropdownMenu>
+          </DropdownMenu> */}
+          <ThemeMenu />
         </nav>
 
       </aside>

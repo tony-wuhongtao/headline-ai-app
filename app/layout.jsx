@@ -38,10 +38,9 @@ export default function RootLayout({ children }) {
       )}>
         <ThemeProvider
             attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-            >
+            defaultTheme="orange"
+            themes={['orange', 'violet','light']}
+            disableTransitionOnChange            >
           <TooltipProvider>
           <main className="px-8 py-5 md:py-8 lg:py-10 max-w-6xl mx-auto flex-col sm:flex-row" >
             {children}

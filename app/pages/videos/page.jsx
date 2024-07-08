@@ -2,13 +2,17 @@
 
 import React, { useState } from 'react'
 import axios from 'axios'
-import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { Badge } from "@/components/ui/badge"
 import Loading from "@/components/Loading"
 import VideoList from '@/components/VideoList'
+import ThemeMenu from '@/components/theme-menu'
+
+ 
+import { Button } from "@/components/ui/button"
+
 
 const CozeHeadlinePage = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -43,11 +47,19 @@ const CozeHeadlinePage = () => {
     }
   }
 
+
+
   return (
     <div className="container mx-auto py-10">
+      
+
       <Card className="mx-auto max-w-2xl">
         <CardHeader>
-          <Badge variant="secondary" className="mb-4 self-start">同上一堂课</Badge>
+          <div className='flex justify-between aligan-items-center'>
+            <Badge variant="secondary" className="mb-4 self-start">同上一堂课</Badge>
+            <ThemeMenu />
+          </div>
+
           <CardTitle className="text-2xl font-bold">
             小学重难点 视频课程智能推荐
           </CardTitle>

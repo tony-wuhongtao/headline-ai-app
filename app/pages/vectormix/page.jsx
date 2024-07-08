@@ -9,6 +9,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { Separator } from "@/components/ui/separator"
 import { Badge } from "@/components/ui/badge"
 import Loading from "@/components/Loading"
+import ThemeMenu from '@/components/theme-menu'
 import VideoListforVectorMix from '@/components/VideoListforVectorMix'
 
 const CozeHeadlinePage = () => {
@@ -80,7 +81,10 @@ const CozeHeadlinePage = () => {
     <div className="container mx-auto py-10 px-4">
       <Card className="mx-auto max-w-2xl">
         <CardHeader>
-          <Badge variant="secondary" className="mb-4 w-fit">同上一堂课</Badge>
+          <div className='flex justify-between aligan-items-center'>
+              <Badge variant="secondary" className="mb-4 self-start">同上一堂课</Badge>
+              <ThemeMenu />
+            </div>
           <CardTitle className="text-2xl font-bold">小学重难点 视频课程智能推荐</CardTitle>
         </CardHeader>
         <CardContent>
