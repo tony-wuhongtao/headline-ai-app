@@ -44,7 +44,7 @@ const HomePage = () => {
             <div className="carousel-item w-full flex justify-center items-center">
               <motion.div className="card-body absolute text-center"
                     initial={{ y: -120, scale: 3, rotate: 45, opacity: 0 }}
-                    animate={{ y: 0, scale:2, rotate: 0, opacity: 1 }}
+                    animate={{ y: 0, scale:1.5, rotate: 0, opacity: 1 }}
                     transition={{ ease: "linear",duration: 1}}>
                 <h2 className="card-title text-white tracking-wider">小学重难点课程推荐</h2>
               </motion.div>
@@ -61,6 +61,34 @@ const HomePage = () => {
                     animate={{ y: 0, scale:2, rotate: 0, opacity: 1 }}
                     transition={{ ease: "linear",duration: 1}}>
                 <h2 className="card-title text-white tracking-wider" >AI绘画</h2>
+              </motion.div>
+              <motion.img src="/ai-painting.jpg" alt="ai-painting" whileTap={{scale:1.5}}/>
+            </div> 
+          </div>
+        </Link>
+
+        <Link href="/pages/motionsvg" className='flex-1 w-full md:w-1/2 lg:w-1/3'>
+          <div className="carousel carousel-center rounded-box m-6 hover:shadow-lg">
+            <div className="carousel-item w-full flex justify-center items-center">
+              <motion.div className="card-body absolute text-center"
+                    initial={{ y: 120, scale: 3, rotate: 90, opacity: 0 }}
+                    animate={{ y: 0, scale:2, rotate: 0, opacity: 1 }}
+                    transition={{ ease: "linear",duration: 1}}>
+                <h2 className="card-title text-white tracking-wider" >炫酷入口</h2>
+              </motion.div>
+              <motion.img src="/ai-painting.jpg" alt="ai-painting" whileTap={{scale:1.5}}/>
+            </div> 
+          </div>
+        </Link>
+
+        <Link href="/pages/shadcnuidemo" className='flex-1 w-full md:w-1/2 lg:w-1/3'>
+          <div className="carousel carousel-center rounded-box m-6 hover:shadow-lg">
+            <div className="carousel-item w-full flex justify-center items-center">
+              <motion.div className="card-body absolute text-center"
+                    initial={{ y: -120, scale: 3, rotate: -90, opacity: 0 }}
+                    animate={{ y: 0, scale:1.3, rotate: 0, opacity: 1 }}
+                    transition={{ ease: "linear",duration: 1}}>
+                <h2 className="card-title text-white tracking-wider" >shadcnUI Demo</h2>
               </motion.div>
               <motion.img src="/ai-painting.jpg" alt="ai-painting" whileTap={{scale:1.5}}/>
             </div> 
