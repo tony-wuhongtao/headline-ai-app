@@ -24,7 +24,7 @@ const CozeHeadlinePage = () => {
     setQuery(e.target.value)
   }
 
-  const apiUrl = "http://103.213.161.39:8000/mix/aisearch"
+  const apiUrl = "https://aiapi.cetv-headline.com/mix/aisearch"
 
   const queryObj = {
     "db_key": "znd_v2",
