@@ -38,64 +38,86 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className='flex flex-col sm:flex-row'>
-        <Link href="/pages/vectormix" className='flex-1 w-full md:w-1/2 lg:w-1/3'>
-          <div className="carousel carousel-center rounded-box m-6 hover:shadow-lg">
-            <div className="carousel-item w-full flex justify-center items-center">
-              <motion.div className="card-body absolute text-center"
-                    initial={{ y: -120, scale: 3, rotate: 45, opacity: 0 }}
-                    animate={{ y: 0, scale:1.5, rotate: 0, opacity: 1 }}
-                    transition={{ ease: "linear",duration: 1}}>
-                <h2 className="card-title text-white tracking-wider">小学重难点课程推荐</h2>
-              </motion.div>
-              <motion.img src="/ai-teacher.jpg" alt="ai-teacher" whileTap={{scale:1.5}} />
-            </div> 
-          </div>
-        </Link>
+      <main className="container mx-auto py-2 px-4 md:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <motion.div className="group relative overflow-hidden rounded-lg shadow-lg" whileTap={{scale:1.2}}>
+            <Link href="/pages/vectormix" className="absolute inset-0 z-10" prefetch={false}>
+              <span className="sr-only"></span>
+            </Link>
+            <motion.img
+              src="/ai-teacher.jpg"
+              alt="Project 1"
+              width={600}
+              height={330}
+              className="h-48 w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+            />
+            <motion.div className="p-4"
+              initial={{ y: 120, scale: 1.2, rotate: -45, opacity: 0 }}
+              animate={{ y: 0, scale:1, rotate: 0, opacity: 1 }}
+              transition={{ ease: "linear",duration: 1}}>
+              <h3 className="text-xl font-semibold">小学重难点课程推荐</h3>
+            </motion.div>
+          </motion.div>
 
-        <Link href="/pages/txt2img" className='flex-1 w-full md:w-1/2 lg:w-1/3'>
-          <div className="carousel carousel-center rounded-box m-6 hover:shadow-lg">
-            <div className="carousel-item w-full flex justify-center items-center">
-              <motion.div className="card-body absolute text-center"
-                    initial={{ y: -120, scale: 3, rotate: -45, opacity: 0 }}
-                    animate={{ y: 0, scale:2, rotate: 0, opacity: 1 }}
-                    transition={{ ease: "linear",duration: 1}}>
-                <h2 className="card-title text-white tracking-wider" >AI绘画</h2>
-              </motion.div>
-              <motion.img src="/ai-painting.jpg" alt="ai-painting" whileTap={{scale:1.5}}/>
-            </div> 
-          </div>
-        </Link>
+          <motion.div className="group relative overflow-hidden rounded-lg shadow-lg" whileTap={{scale:1.2}}>
+            <Link href="/pages/txt2img" className="absolute inset-0 z-10" prefetch={false}>
+              <span className="sr-only"></span>
+            </Link>
+            <motion.img
+              src="/ai-painting.jpg"
+              alt="Project 2"
+              width={600}
+              height={330}
+              className="h-48 w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+            />
+            <motion.div className="p-4"
+              initial={{ y: -120, scale: 1.2, rotate: 45, opacity: 0 }}
+              animate={{ y: 0, scale:1, rotate: 0, opacity: 1 }}
+              transition={{ ease: "linear",duration: 1}}>
+              <h3 className="text-xl font-semibold">AI绘画</h3>
+            </motion.div>
+          </motion.div>
 
-        <Link href="/pages/motionsvg" className='flex-1 w-full md:w-1/2 lg:w-1/3'>
-          <div className="carousel carousel-center rounded-box m-6 hover:shadow-lg">
-            <div className="carousel-item w-full flex justify-center items-center">
-              <motion.div className="card-body absolute text-center"
-                    initial={{ y: 120, scale: 3, rotate: 90, opacity: 0 }}
-                    animate={{ y: 0, scale:2, rotate: 0, opacity: 1 }}
-                    transition={{ ease: "linear",duration: 1}}>
-                <h2 className="card-title text-white tracking-wider" >炫酷入口</h2>
-              </motion.div>
-              <motion.img src="/ai-painting.jpg" alt="ai-painting" whileTap={{scale:1.5}}/>
-            </div> 
-          </div>
-        </Link>
+          <motion.div className="group relative overflow-hidden rounded-lg shadow-lg" whileTap={{scale:1.2}}>
+            <Link href="/pages/motionsvg" className="absolute inset-0 z-10" prefetch={false}>
+              <span className="sr-only"></span>
+            </Link>
+            <motion.img
+              src="/ai-painting.jpg"
+              alt="Project 3"
+              width={600}
+              height={330}
+              className="h-48 w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+            />
+            <motion.div className="p-4"
+              initial={{ y: 120, scale: 1.2, rotate: -45, opacity: 0 }}
+              animate={{ y: 0, scale:1, rotate: 0, opacity: 1 }}
+              transition={{ ease: "linear",duration: 1}}>
+              <h3 className="text-xl font-semibold">炫酷入口</h3>
+            </motion.div>
+          </motion.div>
 
-        <Link href="/pages/shadcnuidemo" className='flex-1 w-full md:w-1/2 lg:w-1/3'>
-          <div className="carousel carousel-center rounded-box m-6 hover:shadow-lg">
-            <div className="carousel-item w-full flex justify-center items-center">
-              <motion.div className="card-body absolute text-center"
-                    initial={{ y: -120, scale: 3, rotate: -90, opacity: 0 }}
-                    animate={{ y: 0, scale:1.3, rotate: 0, opacity: 1 }}
-                    transition={{ ease: "linear",duration: 1}}>
-                <h2 className="card-title text-white tracking-wider" >shadcnUI Demo</h2>
-              </motion.div>
-              <motion.img src="/ai-painting.jpg" alt="ai-painting" whileTap={{scale:1.5}}/>
-            </div> 
-          </div>
-        </Link>
+          <motion.div className="group relative overflow-hidden rounded-lg shadow-lg" whileTap={{scale:1.2}}>
+            <Link href="/pages/shadcnuidemo" className="absolute inset-0 z-10" prefetch={false}>
+              <span className="sr-only">View Project</span>
+            </Link>
+            <motion.img
+              src="/ai-painting.jpg"
+              alt="Project 4"
+              width={600}
+              height={330}
+              className="h-48 w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+            />
+            <motion.div className="p-4"
+              initial={{ y: -120, scale: 1.2, rotate: 45, opacity: 0 }}
+              animate={{ y: 0, scale:1, rotate: 0, opacity: 1 }}
+              transition={{ ease: "linear",duration: 1}}>
+              <h3 className="text-xl font-semibold">shadcnUI Demo</h3>
+            </motion.div>
+          </motion.div>
+        </div>
+      </main>
 
-      </div>
     </>
   )
 }
