@@ -1,0 +1,86 @@
+{
+    "models": [
+        {
+            "modelName": "TurboVisionXL_Bakedvae",
+            "imageUrl": "http://103.213.161.39:7860/sd_extra_networks/thumb?filename=/home/dev/SD/stable-diffusion-webui/models/Stable-diffusion/TurboVisionXL_Bakedvae.jpeg&mtime=1712476354.9140918",
+			"prePrompt": "(masterpiece stylized dramatic close up of:1.1) cartoon animation of a happy mascot Cartoon ",
+			"postPrompt": " running super fast across the desert with a cloud of dust behind him,low-budget cel shaded by Hanna Barbera",
+			"negative": "cropped-frame,imbalance,poor image quality,limited video,specialized creators,polymorphic,washed-out low-contrast (deep fried) watermark,cropped,out-of-frame,low quality,low res,poorly drawn,Realistic photography,photorealistic,photograph,movie,deformed,glitch,noisy,realistic,stock photo,signature watermark,logo,black and white,realism hyperrealism 3D render photorealistic scribbles abstract,stubby mutated disfigured deformed same repeated cropped text watermark signature logo freckles disfigured deformed bad awful ugly",
+			"samplerIndex": "DPM++ SDE",
+			"steps": 5,
+			"seed": -1
+        },
+        {
+            "modelName": "AWPainting_v1.3",
+            "imageUrl": "http://103.213.161.39:7860/sd_extra_networks/thumb?filename=/home/dev/SD/stable-diffusion-webui/models/Stable-diffusion/AWPainting_v1.3.png&mtime=1710833811.5968094",
+			"prePrompt": "",
+			"postPrompt": "",
+			"negative": "",
+			"samplerIndex": "DPM++ SDE",
+			"steps": 5,
+			"seed": 1
+        },
+        {
+            "modelName": "少儿插画_v1",
+            "imageUrl": "http://103.213.161.39:7860/sd_extra_networks/thumb?filename=/home/dev/SD/stable-diffusion-webui/models/Stable-diffusion/%E5%B0%91%E5%84%BF%E6%8F%92%E7%94%BB_v1.png&mtime=1710833681.8510277",
+			"prePrompt": "",
+			"postPrompt": "",
+			"negative": "",
+			"samplerIndex": "DPM++ SDE",
+			"steps": 5,
+			"seed": 1
+        },
+        {
+            "modelName": "Debut _ Outline Color Draw Phoenix_1.0",
+            "imageUrl": "http://103.213.161.39:7860/sd_extra_networks/thumb?filename=/home/dev/SD/stable-diffusion-webui/models/Lora/Debut%20_%20Outline%20Color%20Draw%20Phoenix_1.0.jpg&mtime=1721182716.365986",
+			"prePrompt": "Street,cherry tree, ",
+			"postPrompt": " front in the middle of street,spring,pink,outdoor,Vista,Sun,breeze,petals,illustration style,Shinkai Makoto style,Ultra High resolution,4k",
+			"negative": "(worst quality:2),(low quality:2),(normal quality:2),(easynegative:1.2)lowres,badanatomy,badhands,text,error,missing fingers,extra digit,fewer digits,cropped,EasyNegative,SFW,( worst quality :2),( low quality :2),( normal quality :2),lowres,normal quality,(( monochrome )),(( grayscale )),skin spots,acnes,skin blemishes,age spot,( ugly :1.331),( duplicate :1.331),( morbid :1.21),( mutilated :1.21),( tranny :1.331),mutated hands,( poorly drawn hands :1.5),blurry,( bad anatomy :1.21),( bad proportions :1.331),extra limbs,( disfigured :1.331),( missing arms :1.331),( extra legs :1.331),( fused fingers :1.61051),( too many fingers :1.61051),( unclear eyes :1.331),lowers,bad hands,missing fingers,extra digit,bad hands,missing fingers,((( extra arms and legs ))),negative_hand,verybadimagenegative_v1.3",
+			"samplerIndex": "DPM++ 2M Karras",
+			"steps": 30,
+			"seed": 2184668513
+        },
+        {
+            "modelName": "AgainMixChildrens Children's Picture Book_v3",
+            "imageUrl": "http://103.213.161.39:7860/sd_extra_networks/thumb?filename=/home/dev/SD/stable-diffusion-webui/models/Lora/AgainMixChildrens%20Children%27s%20Picture%20Book_v3.jpg&mtime=1721182716.2979853",
+			"prePrompt": "A cute ",
+			"postPrompt": ",in the park,Ultra High resolution,4k",
+			"negative": "(worst quality:1.5),(low quality:1.5),(normal quality:1.5),(poor quality:1.5),(lowres),(polar lowres),(monochrome),(grayscale),(low res),(drawing),(ugly),easynegative,badhandv4",
+			"samplerIndex": "DPM++ 2M",
+			"steps": 20,
+			"seed": 1081799523
+        },
+        {
+            "modelName": "3D Model _ Cute SDXL_v2.0",
+            "imageUrl": "http://103.213.161.39:7860/sd_extra_networks/thumb?filename=/home/dev/SD/stable-diffusion-webui/models/Stable-diffusion/3D%20Model%20_%20Cute%20SDXL_v2.0.jpg&mtime=1721182468.9591243",
+			"prePrompt": "ixar style, MG_ip,  ",
+			"postPrompt": ",bubble, open mouth, underwater, fangs, looking at viewer, solo, goggles on head, no humans, blush, air bubble, full body, male focus, furry",
+			"negative": "paintings, sketches, (worst quality:2), (low quality:2), (normal quality:2), lowres, ((monochrome)), ((grayscale)), skin spots, acnes, skin blemishes, age spot, glans, extra fingers, fewer fingers, (white letters:1), (multi nipples), bad anatomy, bad hands, text, error, missing fingers, missing arms, missing legs, extra digit, fewer digits, cropped, worst quality, jpeg artifacts, signature, watermark, username, bad feet, {Multiple people}, blurry, poorly drawn hands, poorly drawn face, mutation, deformed, extra limbs, extra arms, extra legs, malformed limbs, fused fingers, too many fingers, long neck, cross-eyed, mutated hands, polar lowres, bad body, bad proportions, gross proportions, wrong feet bottom render, abdominal stretch, briefs, knickers, kecks, thong, {{fused fingers}}, {{bad body}}, bad proportion body to legs, wrong toes, extra toes, missing toes, weird toes, 2 body, 2 pussy, 2 upper, 2 lower, 2 head, 3 hand, 3 feet, extra long leg, super long leg, mirrored image, mirrored noise, , badhandv4, ng_deepnegative_v1_75t, EasyNegative",
+			"samplerIndex": "DPM++ 2M",
+			"steps": 35,
+			"seed": 1
+        },
+        {
+            "modelName": "Kira _ thick paint style_v1.0",
+            "imageUrl": "http://103.213.161.39:7860/sd_extra_networks/thumb?filename=/home/dev/SD/stable-diffusion-webui/models/Stable-diffusion/artErosAerosATribute_aerosNovae.preview.png&mtime=1717659535.3874156",
+			"prePrompt": "xsgb,<lora:xsgb:1>,Portrait,(1girl:1.5), (Dynamic pose), (Futuristic background), a dynamic and futuristic portrait of a ",
+			"postPrompt": " in a dynamic pose against a futuristic backdrop, (Neon lights:1.2), (Energy radiating:1.1), creating an electrifying and unconventional visual experience.",
+			"negative": "bad-hands-5,(worst quality, low quality:1.4),ng_deepnegative_v1_75t,easynegative,bad-artist,bad face,bad anatomy,bad proportions,bad perspective,multiple views,mutated hands and fingers,interlocked fingers,twisted fingers,excessively bent fingers,more than five fingers,lowres,bad hands,text,error,missing fingers,extra digit,fewer digits,cropped,worst quality,low quality,normal quality,jpeg artifacts,signature,watermark,username,blurry,artist name,low quality lowres multiple breasts,low quality lowres mutated hands and fingers,more than two arms,more than two hands,more than two legs,more than two feet,",
+			"samplerIndex": "DPM++ 2M Karras",
+			"steps": 20,
+			"seed": 1570255891
+        },
+        {
+            "modelName": "X tide play_V1",
+            "imageUrl": "http://103.213.161.39:7860/sd_extra_networks/thumb?filename=/home/dev/SD/stable-diffusion-webui/models/Stable-diffusion/X%20tide%20play_V1.jpg&mtime=1721185454.2207875",
+			"prePrompt": "masterpiece,best quality, full body, 1 ",
+			"postPrompt": "",
+			"negative": "EasyNegative,",
+			"samplerIndex": "Euler a",
+			"steps": 20,
+			"seed": 2231436312
+        }
+
+
+    ]
+}

@@ -4,17 +4,9 @@ import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Loading from '@/components/Loading';
 import ProgressBar from '@/components/ProgressBar';
+import ModelStyleSelector from '@/components/ModelStyleSelector';
 import axios from 'axios';
 import {downloadBase64Image} from "@/app/utils/file";
-
-import { Textarea } from "@/components/ui/textarea"
-import { Button } from "@/components/ui/button"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent } from "@/components/ui/card"
-import { toast } from "@/components/ui/use-toast"
-
-import ThemeMenu from "@/components/theme-menu"
 
 // type ModelStyle = {
 //   modelName: string;
@@ -33,8 +25,6 @@ export default function SD() {
   const [isLoading, setIsLoading] = useState(false)
   const [isPending, setIsPending] = useState(true)
   const [modelStyle, setModelStyle] = useState([]);
-
-  const [style, setStyle] = useState("style1")
 
   let taskId = "";
 
@@ -67,8 +57,6 @@ export default function SD() {
     formData = new FormData(event.currentTarget)
     const cnprompt = formData.get('cnprompt')
     let enprompt = formData.get('enprompt')
-
-    formData.set('modelname', style);
 
     // console.log(formData.get('modelname'))
  
@@ -197,106 +185,71 @@ export default function SD() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="flex flex-col md:flex-row h-screen">
-      
-        <div className="bg-background p-6 md:w-1/2">
-          <header className="flex items-center justify-between mb-3">
-            <h1 className="text-2xl font-bold">文生图 Text2Image</h1>
-            <ThemeMenu />
-          </header>
-          <div className="space-y-2">
-            <div>
-              <Label name='cnprompt'>想要绘制什么角色？（如：猫、狗、机器人...）</Label>
-              <Textarea
-                rows={3}
-                className="mt-2"
-                placeholder="想要绘制什么角色？（如：猫、狗、机器人...）"
-                name='cnprompt'
-              />
-            </div>
-            <div>
-              <textarea
-                className="textarea textarea-bordered w-full h-24"
-                placeholder="输入图片的英文描述..."
-                name='enprompt'
-                value={enprompt}
-                disabled
-                style={{display:"none"}}
-              />
-            </div>
-            <div>
-              <Label>选择绘画风格</Label>
-              {/* <ModelStyleSelector options={modelStyle} /> */}
-              <RadioGroup value={style} onValueChange={setStyle} className="grid grid-cols-2 gap-4 mt-2 sm:grid-cols-1">
-                {modelStyle.map((option, index) => (
-                  <Card key={index}>
-                    <CardContent className="p-0">
-                      <RadioGroupItem
-                        value={option.modelName}
-                        id={`style${index}`}
-                        className="peer sr-only"
-                      />
-                      <Label
-                        htmlFor={`style${index}`}
-                        className="block cursor-pointer rounded-md border-muted p-4 hover:border-muted-foreground peer-data-[state=checked]:border-primary"
-                      >
-                        <img
-                          src={option.imageUrl}
-                          alt={`Style ${index}`}
-                          className="w-full h-auto object-cover rounded"
-                        />
-                        <span className="block mt-4 text-sm font-medium text-center">
-                          {option.modelName}
-                        </span>
-                      </Label>
-                    </CardContent>
-                  </Card>
-                ))}
-              </RadioGroup>
-            </div>
-
-            
+    <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 w-full"> 
+      <form onSubmit={handleSubmit} className="p-8">
+      <div className="grid gap-10 lg:grid-cols-2">
+        <div className="lg:pr-10 rounded-lg shadow-lg p-8">
+          <h5 className="mb-4 text-4xl font-extrabold leading-none">文生图 Txt2Image</h5>
+          <h6 className="mb-4 text-sm leading-none">中文输入想要绘制的角色，选择场景，点击生成图像，等待AI绘画</h6>
+          <div className="mb-4">
+            <textarea
+              className="textarea textarea-bordered w-full h-24"
+              placeholder="想要绘制什么角色？（如：猫、狗、机器人...）"
+              name='cnprompt'
+            />
+          </div>
+          <div className="mb-4" style={{display:'none'}}>
+            <textarea
+              className="textarea textarea-bordered w-full h-24"
+              placeholder="输入图片的英文描述..."
+              name='enprompt'
+              value={enprompt}
+              disabled
+            />
+          </div>
+          <div className="mb-4 flex justify-center">
+            <ModelStyleSelector options={modelStyle} />
           </div>
 
+          <div className="flex items-center space-x-4">
+            <div className="mb-4 flex justify-center w-full">
+              <button
+                className="btn w-full text-2xl text-pretty btn-primary"
+                type="submit"
+                disabled={isButtonDisabled}
+              >
+                {isLoading ? '稍等，AI计算中...' : '生成图像'}
+              </button>
+            </div>
+            </div>
         </div>
 
-        <div className="bg-muted flex-1 flex flex-col text-center items-center justify-center p-6 md:border-l mt-6">
-          <div className="space-y-2 w-2/3 mb-4">
-            <Button
-              className="w-full max-w-md" 
-              type="submit"
-              disabled={isButtonDisabled}
-            >
-              {isLoading ? '稍等，AI计算中...' : '生成图像'}
-            </Button>
-          </div>
-          {isLoading ? (
-            // <Spinner /> // 显示加载动画
-            <Loading /> // 显示加载动画
-          ) : imgCode ? (
-            <>
-              <div className="space-y-2">
-                <div>
-                  <img src={`data:image/png;base64,${imgCode}`} width="512" alt="生成的图像" className='rounded-lg shadow-lg w-full'/>
-                </div>
-                <div className='p-6'>
-                  <Button className="w-full" onClick={handleDownload}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+        <div>
+          <div className="flex justify-center h-full flex-col">
+            {isLoading ? (
+              // <Spinner /> // 显示加载动画
+              <Loading /> // 显示加载动画
+            ) : imgCode ? (
+              <div className="flex justify-center relative">
+                <img src={`data:image/png;base64,${imgCode}`} width="512" alt="生成的图像" className='rounded-lg shadow-lg'/>
+                <div className='absolute bottom-3 text-base'>
+                  <button className="btn glass text-primary" onClick={handleDownload}>
+                    <svg t="1717653630476" className="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15841" width="28" height="28"><path d="M802 664v146c0 7.7-6.3 14-14 14H236c-7.7 0-14-6.3-14-14V664c0-5.5-4.5-10-10-10h-50c-5.5 0-10 4.5-10 10v170c0 33.1 26.9 60 60 60h600c33.1 0 60-26.9 60-60V664c0-5.5-4.5-10-10-10h-50c-5.5 0-10 4.5-10 10z" p-id="15842" fill="#5218fa"></path><path d="M547 163v449.5l173.6-173.6c13.7-13.7 35.8-13.7 49.5 0 13.7 13.7 13.7 35.8 0 49.5L536.8 721.7c-0.4 0.4-0.8 0.8-1.3 1.2-0.2 0.2-0.4 0.4-0.6 0.5-0.2 0.2-0.4 0.4-0.7 0.6-0.3 0.2-0.5 0.4-0.8 0.6-0.2 0.1-0.4 0.3-0.5 0.4l-0.9 0.6c-0.2 0.1-0.3 0.2-0.5 0.3-0.3 0.2-0.6 0.4-1 0.6-0.2 0.1-0.3 0.2-0.5 0.3-0.3 0.2-0.6 0.4-1 0.5-0.2 0.1-0.4 0.2-0.5 0.3-0.3 0.2-0.6 0.3-0.9 0.5l-0.6 0.3c-0.3 0.1-0.6 0.3-0.8 0.4-0.2 0.1-0.5 0.2-0.7 0.3-0.3 0.1-0.5 0.2-0.8 0.3l-0.9 0.3c-0.2 0.1-0.4 0.2-0.7 0.2-0.3 0.1-0.6 0.2-1 0.3-0.2 0.1-0.4 0.1-0.6 0.2-0.4 0.1-0.7 0.2-1.1 0.3-0.2 0-0.4 0.1-0.6 0.1-0.4 0.1-0.7 0.2-1.1 0.2-0.2 0-0.4 0.1-0.6 0.1-0.4 0.1-0.7 0.1-1.1 0.2-0.2 0-0.4 0.1-0.7 0.1-0.3 0-0.7 0.1-1 0.1-0.3 0-0.6 0-0.9 0.1-0.3 0-0.5 0-0.8 0.1-1.2 0.1-2.3 0.1-3.5 0-0.3 0-0.5 0-0.8-0.1-0.3 0-0.6 0-0.9-0.1-0.3 0-0.7-0.1-1-0.1-0.2 0-0.4-0.1-0.7-0.1-0.4-0.1-0.7-0.1-1.1-0.2-0.2 0-0.4-0.1-0.6-0.1-0.4-0.1-0.7-0.2-1.1-0.2-0.2 0-0.4-0.1-0.6-0.1-0.4-0.1-0.7-0.2-1.1-0.3-0.2-0.1-0.4-0.1-0.6-0.2-0.3-0.1-0.6-0.2-1-0.3-0.2-0.1-0.5-0.1-0.7-0.2l-0.9-0.3c-0.3-0.1-0.5-0.2-0.8-0.3-0.2-0.1-0.5-0.2-0.7-0.3-0.3-0.1-0.6-0.3-0.8-0.4l-0.6-0.3c-0.3-0.2-0.6-0.3-0.9-0.5-0.2-0.1-0.4-0.2-0.5-0.3-0.3-0.2-0.6-0.4-1-0.6-0.2-0.1-0.3-0.2-0.5-0.3-0.3-0.2-0.6-0.4-1-0.6-0.2-0.1-0.3-0.2-0.5-0.3-0.3-0.2-0.6-0.4-0.9-0.7-0.2-0.1-0.3-0.3-0.5-0.4-0.3-0.2-0.5-0.4-0.8-0.6-0.2-0.2-0.4-0.4-0.7-0.6-0.2-0.2-0.4-0.4-0.6-0.5l-1.2-1.2-233.1-233.1c-13.7-13.7-13.7-35.8 0-49.5 13.7-13.7 35.8-13.7 49.5 0L477 612.5V163c0-19.3 15.7-35 35-35s35 15.7 35 35z" p-id="15843" fill="#5218fa"></path></svg>
                       下载图片
-                  </Button>
+                  </button>
                 </div>
               </div>
-            </>
-          ) : null}
-          {!isPending ? (<ProgressBar isLoading={isLoading}/>):null}
-          {isPending && isLoading ? (
-            <div className='mb-4 flex justify-center text-base'>任务排队中</div>
-          ) : null}
+            ) : null}
+            {!isPending ? (<ProgressBar isLoading={isLoading}/>):null}
+            {isPending && isLoading ? (
+              <div className='mb-4 flex justify-center text-base'>任务排队中</div>
+            ) : null}
+          </div>
           
+          
+          </div>
         </div>
-      
-      </div>
-    </form>
+      </form>
+    </div>
   );
 };

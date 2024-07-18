@@ -60,9 +60,12 @@
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.1",
     "video-react": "^0.16.0",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@types/node": "20.14.10",
+    "@types/react": "18.3.3",
     "daisyui": "^4.12.2",
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
