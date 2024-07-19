@@ -19,6 +19,6 @@ export async function GET() {
 
 
 
-export async function POST(request: NextRequest) {
+export async function POST(request) {
 
 }
