@@ -230,21 +230,21 @@ export default function SD() {
               <Label>选择绘画风格</Label>
               {/* <ModelStyleSelector options={modelStyle} /> */}
               <RadioGroup value={style} onValueChange={setStyle} className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 mt-2">
-                {modelStyle.map((option, num) => (
-                  <Card key={num}>
+                {modelStyle.map((option, index) => (
+                  <Card key={index}>
                     <CardContent className="p-0">
                     <RadioGroupItem
-                      value={`style${num}`}
-                      id={`style${num}`}
+                      value={option.modelName}
+                      id={`style${index}`}
                       className="peer sr-only"
                     />
                     <Label
-                      htmlFor={`style${num}`}
+                      htmlFor={`style${index}`}
                       className="block cursor-pointer rounded-md border-2 border-muted p-4 hover:border-muted-foreground peer-data-[state=checked]:border-primary"
                     >
                         <img
                           src={option.imageUrl}
-                          alt={`Style ${num}`}
+                          alt={`Style ${index}`}
                           className="w-full h-auto object-cover rounded"
                           ratio={1}
                         />
