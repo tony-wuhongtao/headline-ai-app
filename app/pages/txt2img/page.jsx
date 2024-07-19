@@ -225,26 +225,28 @@ export default function SD() {
                 style={{display:"none"}}
               />
             </div>
+
             <div>
               <Label>选择绘画风格</Label>
               {/* <ModelStyleSelector options={modelStyle} /> */}
-              <RadioGroup value={style} onValueChange={setStyle} className="grid grid-cols-2 gap-4 mt-2 sm:grid-cols-1">
-                {modelStyle.map((option, index) => (
-                  <Card key={index}>
+              <RadioGroup value={style} onValueChange={setStyle} className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 mt-2">
+                {modelStyle.map((option, num) => (
+                  <Card key={num}>
                     <CardContent className="p-0">
-                      <RadioGroupItem
-                        value={option.modelName}
-                        id={`style${index}`}
-                        className="peer sr-only"
-                      />
-                      <Label
-                        htmlFor={`style${index}`}
-                        className="block cursor-pointer rounded-md border-muted p-4 hover:border-muted-foreground peer-data-[state=checked]:border-primary"
-                      >
+                    <RadioGroupItem
+                      value={`style${num}`}
+                      id={`style${num}`}
+                      className="peer sr-only"
+                    />
+                    <Label
+                      htmlFor={`style${num}`}
+                      className="block cursor-pointer rounded-md border-2 border-muted p-4 hover:border-muted-foreground peer-data-[state=checked]:border-primary"
+                    >
                         <img
                           src={option.imageUrl}
-                          alt={`Style ${index}`}
+                          alt={`Style ${num}`}
                           className="w-full h-auto object-cover rounded"
+                          ratio={1}
                         />
                         <span className="block mt-4 text-sm font-medium text-center">
                           {option.modelName}
@@ -281,7 +283,7 @@ export default function SD() {
                   <img src={`data:image/png;base64,${imgCode}`} width="512" alt="生成的图像" className='rounded-lg shadow-lg w-full'/>
                 </div>
                 <div className='p-6'>
-                  <Button className="w-full" onClick={handleDownload}>
+                  <Button className="w-2/3" onClick={handleDownload}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
                       下载图片
                   </Button>
