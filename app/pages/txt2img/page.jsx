@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent } from "@/components/ui/card"
-import { toast } from "@/components/ui/use-toast"
+import { Switch } from "@/components/ui/switch"
 
 import ThemeMenu from "@/components/theme-menu"
 
@@ -33,8 +33,9 @@ export default function SD() {
   const [isLoading, setIsLoading] = useState(false)
   const [isPending, setIsPending] = useState(true)
   const [modelStyle, setModelStyle] = useState([]);
+  const [isCustomized, setIsCustomized] = useState(false)
 
-  const [style, setStyle] = useState("style1")
+  const [style, setStyle] = useState("AWPainting_v1.3")
 
   let taskId = "";
 
@@ -53,6 +54,22 @@ export default function SD() {
       console.log(error);
     }
   },[])
+
+  function handleStyle(style) {
+    setStyle(style);
+    modelStyle.forEach(item => {
+      if(item.modelName == style) {
+        document.getElementById("cnprompt").value = item.promptCn;
+        setEnprompt(item.prompt);
+      }
+    })
+  }
+
+  function handleCustomized(isCustomized) {
+    setIsCustomized(isCustomized);
+    document.getElementById("cnprompt").value = "";
+    setEnprompt("");
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault() // 防止表单提交导致页面刷新
@@ -113,13 +130,14 @@ export default function SD() {
     // append formdata with model parameters
     for (let i = 0; i < modelStyle.length; i++){
       if(modelStyle[i].modelName == formData.get('modelname')){
-        let prompt = ""
         params.modelname = formData.get('modelname')
-        if (modelStyle[i].prePrompt !== undefined && modelStyle[i].postPrompt !== undefined) {
-          prompt = String(modelStyle[i].prePrompt)
-          params.prompt = prompt + formData.get('enprompt') + String(modelStyle[i].postPrompt)
+        if (!isCustomized && modelStyle[i].prompt !== undefined) {
+          //预设提示词
+          params.prompt = String(modelStyle[i].prompt)
+          // params.prompt = prompt + formData.get('enprompt') + String(modelStyle[i].postPrompt)
         }
         else{
+          //自定义提示词
           params.prompt = formData.get('enprompt')
         }
 
@@ -206,30 +224,41 @@ export default function SD() {
             <ThemeMenu />
           </header>
           <div className="space-y-2">
+            <div className="flex items-center space-x-2">
+              <Switch 
+                value={isCustomized}
+                onCheckedChange={(v) => handleCustomized(v, isCustomized)}
+                id="customized-mode" />
+              <Label htmlFor="airplane-mode">自定义提示词</Label>
+            </div>
             <div>
-              <Label name='cnprompt'>想要绘制什么角色？（如：猫、狗、机器人...）</Label>
+              <Label>提示词：</Label>
               <Textarea
+                id="cnprompt"
                 rows={3}
                 className="mt-2"
-                placeholder="想要绘制什么角色？（如：猫、狗、机器人...）"
+                placeholder="输入想要绘制的场景描述"
                 name='cnprompt'
+                disabled={!isCustomized}
               />
             </div>
             <div>
-              <textarea
-                className="textarea textarea-bordered w-full h-24"
-                placeholder="输入图片的英文描述..."
+              <Textarea
+                id="prompt"
+                rows={3}
+                className="mt-2"
+                placeholder="英文翻译描述"
                 name='enprompt'
                 value={enprompt}
                 disabled
-                style={{display:"none"}}
+                // style={{display:"none"}}
               />
             </div>
 
             <div>
               <Label>选择绘画风格</Label>
               {/* <ModelStyleSelector options={modelStyle} /> */}
-              <RadioGroup value={style} onValueChange={setStyle} className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 mt-2">
+              <RadioGroup value={style} onValueChange={(v) => handleStyle(v, style)}  className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 mt-2">
                 {modelStyle.map((option, index) => (
                   <Card key={index}>
                     <CardContent className="p-0">
