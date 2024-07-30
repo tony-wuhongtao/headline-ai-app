@@ -19,7 +19,7 @@ const CozeHeadlinePage = () => {
   const [hasRAG, setHasRAG] = useState(true)
   const [videos, setVideos] = useState([])
   const [display, setDisplay] = useState(false)
-  const startTime = 20
+  const startTime = 0
 
   const handleQueryChange = (e) => {
     setQuery(e.target.value)
@@ -28,7 +28,7 @@ const CozeHeadlinePage = () => {
   const apiUrl = "https://aiapi.cetv-headline.com/mix/aisearch"
 
   const queryObj = {
-    "db_key": "znd_v2",
+    "db_key": "hjb",
     "top_k": 4,
     "vector_weight": 0.2,
     "keyword_weight": 0.8,
@@ -86,7 +86,7 @@ const CozeHeadlinePage = () => {
               <Badge variant="secondary" className="mb-4 self-start">同上一堂课</Badge>
               <ThemeMenu />
             </div>
-          <CardTitle className="text-2xl font-bold">小学重难点 视频课程智能推荐</CardTitle>
+          <CardTitle className="text-2xl font-bold">沪教版数学 视频课程智能推荐</CardTitle>
         </CardHeader>
         <CardContent>
           <Collapsible open={!display}>

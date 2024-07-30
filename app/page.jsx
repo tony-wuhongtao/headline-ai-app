@@ -52,10 +52,31 @@ const HomePage = () => {
               className="h-48 w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
             />
             <motion.div className="p-4"
-              initial={{ y: 120, scale: 1.2, rotate: -45, opacity: 0 }}
-              animate={{ y: 0, scale:1, rotate: 0, opacity: 1 }}
-              transition={{ ease: "linear",duration: 1}}>
+              // initial={{ y: 120, scale: 1.2, rotate: -45, opacity: 0 }}
+              // animate={{ y: 0, scale:1, rotate: 0, opacity: 1 }}
+              // transition={{ ease: "linear",duration: 1}}
+            >
               <h3 className="text-xl font-semibold">小学重难点课程推荐</h3>
+            </motion.div>
+          </motion.div>
+
+          <motion.div className="group relative overflow-hidden rounded-lg shadow-lg" whileTap={{scale:1.2}}>
+            <Link href="/pages/hjbvector" className="absolute inset-0 z-10" prefetch={false}>
+              <span className="sr-only"></span>
+            </Link>
+            <motion.img
+              src="/hjb.jpg"
+              alt="Project 1"
+              width={600}
+              height={330}
+              className="h-48 w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+            />
+            <motion.div className="p-4"
+              // initial={{ y: 120, scale: 1.2, rotate: -45, opacity: 0 }}
+              // animate={{ y: 0, scale:1, rotate: 0, opacity: 1 }}
+              // transition={{ ease: "linear",duration: 1}}
+            >
+              <h3 className="text-xl font-semibold">沪教版数学课程推荐</h3>
             </motion.div>
           </motion.div>
 
@@ -71,9 +92,10 @@ const HomePage = () => {
               className="h-48 w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
             />
             <motion.div className="p-4"
-              initial={{ y: -120, scale: 1.2, rotate: 45, opacity: 0 }}
-              animate={{ y: 0, scale:1, rotate: 0, opacity: 1 }}
-              transition={{ ease: "linear",duration: 1}}>
+              // initial={{ y: -120, scale: 1.2, rotate: 45, opacity: 0 }}
+              // animate={{ y: 0, scale:1, rotate: 0, opacity: 1 }}
+              // transition={{ ease: "linear",duration: 1}}
+            >
               <h3 className="text-xl font-semibold">AI绘画</h3>
             </motion.div>
           </motion.div>
@@ -90,9 +112,10 @@ const HomePage = () => {
               className="h-48 w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
             />
             <motion.div className="p-4"
-              initial={{ y: 120, scale: 1.2, rotate: -45, opacity: 0 }}
-              animate={{ y: 0, scale:1, rotate: 0, opacity: 1 }}
-              transition={{ ease: "linear",duration: 1}}>
+              // initial={{ y: 120, scale: 1.2, rotate: -45, opacity: 0 }}
+              // animate={{ y: 0, scale:1, rotate: 0, opacity: 1 }}
+              // transition={{ ease: "linear",duration: 1}}
+            >
               <h3 className="text-xl font-semibold">炫酷入口</h3>
             </motion.div>
           </motion.div>
@@ -109,9 +132,10 @@ const HomePage = () => {
               className="h-48 w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
             />
             <motion.div className="p-4"
-              initial={{ y: -120, scale: 1.2, rotate: 45, opacity: 0 }}
-              animate={{ y: 0, scale:1, rotate: 0, opacity: 1 }}
-              transition={{ ease: "linear",duration: 1}}>
+              // initial={{ y: -120, scale: 1.2, rotate: 45, opacity: 0 }}
+              // animate={{ y: 0, scale:1, rotate: 0, opacity: 1 }}
+              // transition={{ ease: "linear",duration: 1}}
+            >
               <h3 className="text-xl font-semibold">shadcnUI Demo</h3>
             </motion.div>
           </motion.div>

@@ -20,7 +20,7 @@ export async function POST(request) {
 
     const body = {
         model: aiModel,
-        prompt: "Translate : the following Chinese into English, only reply to my translated English text:" + cnTxt,
+        prompt: "Translate : the following Chinese into English, only reply to my translated English text, no need to explain:" + cnTxt,
         // prompt: "Translation: The following Chinese is translated into English, reply to my translation to split the key words in the sentence with commas,directly reply to my translated and divided English text, without any guidance.:" +cnString,
         Stream: false
     }

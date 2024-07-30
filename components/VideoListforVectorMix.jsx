@@ -1,7 +1,7 @@
 import { Player,BigPlayButton,ReplayControl,ForwardControl,ControlBar,LoadingSpinner  } from 'video-react';
 import "video-react/dist/video-react.css"; 
 
-const VideoList = ({videos}) => {
+const VideoList = ({videos, startTime}) => {
   return (
     <div className="flex-row">
     {
@@ -11,7 +11,7 @@ const VideoList = ({videos}) => {
                     <div>
                         <figure>
                             <Player
-                                    startTime = {20}
+                                    startTime = {startTime}
                                     preload="auto"
                                     poster={video.cover_link}
                                     src={video.link}
